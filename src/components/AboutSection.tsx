@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import aboutImg from "@/assets/about-portrait.jpg";
+import BotanicalDeco from "@/components/BotanicalDeco";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -8,9 +9,11 @@ const fadeUp = {
 
 const AboutSection = () => {
   return (
-    <section id="quien-soy" className="py-24 md:py-36 bg-card">
+    <section id="quien-soy" className="relative py-28 md:py-40 bg-card/50">
+      <BotanicalDeco variant="petal-corner" className="absolute top-0 left-0 w-24 opacity-30 rotate-90" />
+
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Image */}
           <motion.div
             variants={fadeUp}
@@ -21,7 +24,7 @@ const AboutSection = () => {
             <img
               src={aboutImg}
               alt="Dra. Ana Bell Vásquez Ramírez en consulta"
-              className="rounded-2xl object-cover w-full aspect-[4/5] shadow-xl"
+              className="rounded-2xl object-cover w-full aspect-[4/5] shadow-xl shadow-foreground/8"
               loading="lazy"
             />
           </motion.div>
@@ -34,9 +37,9 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="space-y-6"
           >
-            <p className="text-sm tracking-[0.3em] uppercase text-accent">Quién soy</p>
+            <p className="text-sm tracking-[0.3em] uppercase text-warm">Quién soy</p>
             <h2 className="text-4xl md:text-5xl font-light text-foreground leading-tight">
-              La medicina como <span className="italic">escucha</span>
+              La medicina como <span className="italic text-primary">escucha</span>
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
@@ -57,6 +60,11 @@ const AboutSection = () => {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Divider */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <BotanicalDeco variant="leaf-divider" className="w-full h-10 opacity-30" />
       </div>
     </section>
   );
