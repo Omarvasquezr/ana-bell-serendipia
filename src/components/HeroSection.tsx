@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import heroImg from "@/assets/hero-portrait.jpg";
 import BotanicalDeco from "@/components/BotanicalDeco";
+import { waLink } from "@/lib/whatsapp";
 
 const HeroSection = () => {
   return (
@@ -36,7 +37,9 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#contacto"
+                href={waLink("Hola Dra. Ana Bell, quisiera agendar una consulta.")}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-primary-foreground text-sm tracking-wide rounded-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
               >
                 Agendar consulta
@@ -63,8 +66,12 @@ const HeroSection = () => {
               <img
                 src={heroImg}
                 alt="Dra. Ana Bell Vásquez Ramírez — Médico Internista"
+                width={1024}
+                height={1024}
                 className="relative rounded-2xl object-cover w-full aspect-[3/4] shadow-xl shadow-foreground/10"
                 loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
           </motion.div>

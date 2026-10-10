@@ -24,8 +24,11 @@ const AboutSection = () => {
             <img
               src={aboutImg}
               alt="Dra. Ana Bell Vásquez Ramírez en consulta"
+              width={1024}
+              height={1024}
               className="rounded-2xl object-cover w-full aspect-[4/5] shadow-xl shadow-foreground/8"
               loading="lazy"
+              decoding="async"
             />
           </motion.div>
 
@@ -43,15 +46,15 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Soy venezolana, médico internista formada en la Universidad Nacional Experimental
-                Rómulo Gallegos (UNERG) con mención <em>Cum Laude</em>. Hice mi postgrado en
-                Medicina Interna en la Cruz Roja Venezolana — Hospital Carlos J. Bello, donde
-                también fui Jefa de Residentes.
+                Soy médico especialista en Medicina Interna, formada en la Universidad Nacional
+                Experimental Rómulo Gallegos (UNERG) con mención <em>Cum Laude</em>. Hice mi
+                postgrado en la Cruz Roja Venezolana — Hospital Carlos J. Bello, donde también
+                fui Jefa de Residentes.
               </p>
               <p>
-                Hoy resido en Italia, pero mi vocación no tiene fronteras. Me apasiona el ser
-                humano completo: no solo el diagnóstico, sino la persona que hay detrás de cada
-                síntoma. Creo en una medicina que escucha, que acompaña y que transforma.
+                Ejerzo en Caracas. Me apasiona el ser humano completo: no solo el diagnóstico,
+                sino la persona detrás de cada síntoma. Creo en una medicina que escucha y
+                acompaña.
               </p>
               <p>
                 Mi consulta no es solo un espacio clínico — es un lugar donde te sientes visto,
