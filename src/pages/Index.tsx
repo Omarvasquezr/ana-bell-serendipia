@@ -1,11 +1,6 @@
 import { waLink } from "@/lib/whatsapp";
+import painting from "../assets/hero-pintura.webp.asset.json";
 
-const paintings = import.meta.glob("/src/assets/hero-pintura.webp", {
-  eager: true,
-  query: "?url",
-  import: "default",
-}) as Record<string, string>;
-const paintingSrc = Object.values(paintings)[0];
 const saveData =
   typeof navigator !== "undefined" &&
   (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
@@ -37,9 +32,9 @@ const Index = () => (
 
     <main id="contenido">
       <section className="relative overflow-hidden">
-        {paintingSrc && !saveData && (
+        {painting && !saveData && (
           <img
-            src={paintingSrc}
+            src={painting.url}
             alt="Pintura de la doctora: dos canarios en una ventana"
             className="pointer-events-none absolute inset-y-0 right-0 h-full w-full object-cover opacity-25 md:w-1/2 md:opacity-45"
             style={{ maskImage: "linear-gradient(to right, transparent, black 45%)", WebkitMaskImage: "linear-gradient(to right, transparent, black 45%)" }}
@@ -123,8 +118,8 @@ const Index = () => (
           <a className="tap justify-center underline underline-offset-4" href="mailto:anabellanb@gmail.com">anabellanb@gmail.com</a>
         </p>
         <p className="measure mx-auto mt-6 text-base">
-          Por WhatsApp puedes escribirme para agendar. No envíes estudios ni datos médicos
-          hasta que te confirme la cita.
+          Por WhatsApp puede escribirme para agendar. No envíe estudios ni datos médicos
+          hasta que yo confirme la cita.
         </p>
       </section>
     </main>
