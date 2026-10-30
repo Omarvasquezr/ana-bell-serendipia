@@ -1,5 +1,29 @@
 import { waLink } from "@/lib/whatsapp";
 import painting from "../assets/hero-pintura.webp.asset.json";
+import esfera from "../assets/pintura-esfera.webp.asset.json";
+import campus from "../assets/pintura-campus.webp.asset.json";
+import valle from "../assets/pintura-valle.webp.asset.json";
+
+const cuadros = [
+  {
+    src: esfera.url,
+    w: 510,
+    h: 332,
+    alt: "Pintura de la autora: una esfera roja suspendida dentro de una estructura blanca, junto a una autopista, con una montaña al fondo",
+  },
+  {
+    src: campus.url,
+    w: 626,
+    h: 441,
+    alt: "Pintura de la autora: un conjunto de edificios modernos vistos desde arriba, con montañas detrás",
+  },
+  {
+    src: valle.url,
+    w: 520,
+    h: 329,
+    alt: "Pintura de la autora: picos rocosos sobre un valle con casas y colinas doradas",
+  },
+];
 
 const saveData =
   typeof navigator !== "undefined" &&
@@ -106,6 +130,29 @@ const Index = () => (
           ))}
         </ol>
         <div className="rule" />
+      </section>
+
+      <section id="pinturas" className="mx-auto max-w-6xl px-6 py-24 fade-in">
+        <h2 className="text-5xl md:text-6xl mb-6">Pinturas</h2>
+        <p className="measure mb-12">Cuadros de mi autoría.</p>
+        {!saveData && (
+          <ul className="grid gap-10 md:grid-cols-3">
+            {cuadros.map((c) => (
+              <li key={c.src}>
+                <img
+                  src={c.src}
+                  alt={c.alt}
+                  width={c.w}
+                  height={c.h}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-full"
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="rule mt-12" />
       </section>
 
       <section id="consulta" className="mx-auto max-w-6xl px-6 py-24 text-center">
