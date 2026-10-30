@@ -38,7 +38,6 @@ const Index = () => (
             alt="Pintura de la doctora: dos canarios en una ventana"
             className="pointer-events-none absolute inset-y-0 right-0 h-full w-full object-cover opacity-25 md:w-1/2 md:opacity-45"
             style={{ maskImage: "linear-gradient(to right, transparent, black 45%)", WebkitMaskImage: "linear-gradient(to right, transparent, black 45%)" }}
-            fetchPriority="high"
             decoding="async"
           />
         )}
