@@ -35,6 +35,16 @@ const services = [
   { n: "I", title: "Consulta de Medicina Interna", desc: "Evaluación completa, con tiempo para escucharle. Diagnóstico claro y un plan que pueda seguir.", message: "Hola Dra. Ana Bell, quisiera agendar una consulta de medicina interna." },
   { n: "II", title: "Control de hipertensión", desc: "Seguimiento cercano de su presión arterial para mantenerla en equilibrio.", message: "Hola Dra., me interesa el control de hipertensión." },
   { n: "III", title: "Control de diabetes", desc: "Acompañamiento continuo de sus niveles de glucosa y de su día a día.", message: "Hola Dra., me interesa el control de diabetes." },
+  { n: "IV", title: "Consulta en línea", desc: "Nos vemos por videollamada, con el mismo tiempo para escucharle y explicarle.", message: "Hola Dra., me interesa la consulta en línea." },
+];
+
+const steps = [
+  { n: "I", text: "Escríbame por WhatsApp y cuénteme brevemente el motivo de su consulta." },
+  { n: "II", text: "Le confirmaré el día y la hora." },
+  {
+    n: "III",
+    text: "El pago puede hacerse por pago móvil, Zelle o USDT, y también en bolívares al tipo de cambio oficial del BCV del día. Los datos para pagar se los envío por WhatsApp al confirmar la cita. El valor de la consulta se le informará al agendar.",
+  },
 ];
 
 const Index = () => (
@@ -79,6 +89,17 @@ const Index = () => (
             Escribirme por WhatsApp
           </a>
         </div>
+      </section>
+
+      <div className="mx-auto max-w-6xl px-6"><div className="rule" /></div>
+
+      <section id="manera" className="mx-auto max-w-6xl px-6 py-20 fade-in">
+        <h2 className="text-5xl md:text-6xl mb-8">Mi manera de ejercer</h2>
+        <p className="dropcap measure">
+          La medicina interna exige mirar a la persona completa. Antes de pedir un examen,
+          procuro escucharle; antes de indicar un tratamiento, procuro explicarle. Creo que un
+          diagnóstico bien comprendido ya es el comienzo del cuidado.
+        </p>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="rule" /></div>
@@ -132,6 +153,33 @@ const Index = () => (
         <div className="rule" />
       </section>
 
+      <section id="como-agendar" className="mx-auto max-w-6xl px-6 py-24">
+        <h2 className="text-5xl md:text-6xl mb-12">Cómo agendar</h2>
+        <ol>
+          {steps.map((s) => (
+            <li key={s.n} className="rule grid gap-4 py-10 md:grid-cols-[6rem_1fr] md:items-baseline">
+              <span className="serif text-4xl text-accent" aria-hidden="true">{s.n}</span>
+              <p className="measure">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="rule" />
+      </section>
+
+      <section id="consulta" className="mx-auto max-w-6xl px-6 py-24 text-center">
+        <h2 className="text-5xl md:text-6xl mb-10">Consulta</h2>
+        <a className="btn-primary text-lg px-12" style={{ minHeight: 60 }} href={waLink(GREETING)} target="_blank" rel="noopener noreferrer">
+          Escribirme por WhatsApp
+        </a>
+        <p className="mt-8">
+          <a className="tap justify-center underline underline-offset-4" href="mailto:anabellanb@gmail.com">anabellanb@gmail.com</a>
+        </p>
+        <p className="measure mx-auto mt-6 text-base">
+          Por WhatsApp puede escribirme para agendar. No envíe estudios ni datos médicos
+          hasta que yo confirme la cita.
+        </p>
+      </section>
+
       <section id="pinturas" className="mx-auto max-w-6xl px-6 py-24 fade-in">
         <h2 className="text-5xl md:text-6xl mb-6">Pinturas</h2>
         <p className="measure mb-12">Cuadros de mi autoría.</p>
@@ -152,21 +200,6 @@ const Index = () => (
             ))}
           </ul>
         )}
-        <div className="rule mt-12" />
-      </section>
-
-      <section id="consulta" className="mx-auto max-w-6xl px-6 py-24 text-center">
-        <h2 className="text-5xl md:text-6xl mb-10">Consulta</h2>
-        <a className="btn-primary text-lg px-12" style={{ minHeight: 60 }} href={waLink(GREETING)} target="_blank" rel="noopener noreferrer">
-          Escribirme por WhatsApp
-        </a>
-        <p className="mt-8">
-          <a className="tap justify-center underline underline-offset-4" href="mailto:anabellanb@gmail.com">anabellanb@gmail.com</a>
-        </p>
-        <p className="measure mx-auto mt-6 text-base">
-          Por WhatsApp puede escribirme para agendar. No envíe estudios ni datos médicos
-          hasta que yo confirme la cita.
-        </p>
       </section>
     </main>
 
