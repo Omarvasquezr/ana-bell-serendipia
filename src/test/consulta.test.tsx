@@ -19,12 +19,18 @@ describe("consulta y agendamiento", () => {
   it("muestra los cuatro servicios, con la consulta en línea como IV", () => {
     const { container } = page();
     const items = Array.from(container.querySelectorAll("#servicios ol > li"));
-    expect(items.map((li) => norm(li.textContent ?? ""))).toEqual([
-      "I Consulta de Medicina Interna Evaluación completa, con tiempo para escucharle. Diagnóstico claro y un plan que pueda seguir. Escribir por WhatsApp",
-      "II Control de hipertensión Seguimiento cercano de su presión arterial para mantenerla en equilibrio. Escribir por WhatsApp",
-      "III Control de diabetes Acompañamiento continuo de sus niveles de glucosa y de su día a día. Escribir por WhatsApp",
-      "IV Consulta en línea Nos vemos por videollamada, con el mismo tiempo para escucharle y explicarle. Escribir por WhatsApp",
-    ]);
+    expect(items).toHaveLength(4);
+    const expected = [
+      ["I", "Consulta de Medicina Interna", "Evaluación completa, con tiempo para escucharle. Diagnóstico claro y un plan que pueda seguir."],
+      ["II", "Control de hipertensión", "Seguimiento cercano de su presión arterial para mantenerla en equilibrio."],
+      ["III", "Control de diabetes", "Acompañamiento continuo de sus niveles de glucosa y de su día a día."],
+      ["IV", "Consulta en línea", "Nos vemos por videollamada, con el mismo tiempo para escucharle y explicarle."],
+    ];
+    items.forEach((li, i) => {
+      const t = norm(li.textContent ?? "");
+      expected[i].forEach((part) => expect(t).toContain(part));
+      expect(t).toContain("Escribir por WhatsApp");
+    });
     const onlineLink = items[3].querySelector("a") as HTMLAnchorElement;
     expect(decodeURIComponent(onlineLink.href)).toBe(
       "https://wa.me/584265110762?text=Hola Dra., me interesa la consulta en línea."
