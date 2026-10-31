@@ -29,6 +29,16 @@ const saveData =
   typeof navigator !== "undefined" &&
   (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
 
+const PaintingPlate = ({ artwork, className = "" }: { artwork: typeof cuadros[number]; className?: string }) => {
+  if (saveData) return null;
+  return (
+    <figure className={`painting-plate ${className}`}>
+      <img src={artwork.src} alt={artwork.alt} width={artwork.w} height={artwork.h} loading="lazy" decoding="async" />
+      <figcaption />
+    </figure>
+  );
+};
+
 const GREETING = "Hola Dra. Ana Bell, quisiera agendar una consulta.";
 
 const services = [
@@ -95,22 +105,27 @@ const Index = () => (
 
       <section id="manera" className="mx-auto max-w-6xl px-6 py-20 fade-in">
         <h2 className="text-5xl md:text-6xl mb-8">Mi manera de ejercer</h2>
+        <div className="lead-layout">
         <p className="dropcap measure">
           La medicina interna exige mirar a la persona completa. Antes de pedir un examen,
           procuro escucharle; antes de indicar un tratamiento, procuro explicarle. Creo que un
           diagnóstico bien comprendido ya es el comienzo del cuidado.
         </p>
+        <PaintingPlate artwork={cuadros[0]} className="plate-esfera" />
+        </div>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="rule" /></div>
 
       <section id="quien-soy" className="mx-auto max-w-6xl px-6 py-24 fade-in">
         <h2 className="text-5xl md:text-6xl mb-12">Quién soy</h2>
-        <div className="gap-12 md:columns-2 [&>p]:mb-6 [&>p]:break-inside-avoid-column">
-          <p className="dropcap measure">
+        <div className="about-layout">
+          <p className="dropcap measure about-intro">
             Soy médico especialista en Medicina Interna. Me formé en la Universidad Nacional
             Experimental Rómulo Gallegos (UNERG), donde obtuve el título con mención Cum Laude.
           </p>
+          <PaintingPlate artwork={cuadros[2]} className="plate-valle" />
+          <div className="about-continuation space-y-6">
           <p className="measure">
             Realicé el postgrado en la Cruz Roja Venezolana – Hospital Carlos J. Bello, donde
             ejercí además como Jefa de Residentes.
@@ -123,6 +138,7 @@ const Index = () => (
             Le recibo con el tiempo necesario para escucharle, explicarle con claridad su
             situación y acordar con usted un plan de cuidado.
           </p>
+          </div>
         </div>
       </section>
 
@@ -131,6 +147,7 @@ const Index = () => (
         <blockquote className="serif italic text-4xl md:text-6xl text-accent">
           “Vine a crecer para dar, no solo ser.”
         </blockquote>
+        <PaintingPlate artwork={cuadros[1]} className="plate-campus mt-12" />
         <div className="rule-canary mx-auto w-24 mt-10" />
       </section>
 
@@ -180,27 +197,6 @@ const Index = () => (
         </p>
       </section>
 
-      <section id="pinturas" className="mx-auto max-w-6xl px-6 py-24 fade-in">
-        <h2 className="text-5xl md:text-6xl mb-6">Pinturas</h2>
-        <p className="measure mb-12">Cuadros de mi autoría.</p>
-        {!saveData && (
-          <ul className="grid gap-10 md:grid-cols-3">
-            {cuadros.map((c) => (
-              <li key={c.src}>
-                <img
-                  src={c.src}
-                  alt={c.alt}
-                  width={c.w}
-                  height={c.h}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-auto w-full"
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </main>
 
     <footer className="mx-auto max-w-6xl px-6">
